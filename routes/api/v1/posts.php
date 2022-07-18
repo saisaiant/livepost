@@ -3,13 +3,14 @@
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['auth'])
-    ->prefix('hi')
+Route::middleware(
+        []
+        )
     ->name('posts.')
     ->group(function () {
-    Route::get('posts', [PostController::class, 'index'])
-            ->name('index')
-            ->withoutMiddleware('auth');
+    Route::get('/posts', [PostController::class, 'index'])
+            ->name('index');
+        //     ->withoutMiddleware('auth');
     
     Route::get('/posts/{post}', [PostController::class, 'show'])
             ->name('show')

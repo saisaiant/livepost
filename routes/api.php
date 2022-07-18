@@ -1,7 +1,7 @@
 <?php
 
-use App\Helpers\Routes\RouteHelper;
-use Illuminate\Http\JsonResponse;
+// use App\Helpers\Routes\RouteHelper;
+// use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('v1')
     ->group(function () {
 
-        RouteHelper::includeRouteFile(__DIR__ . '/api/v1');
+        \App\Helpers\Routes\RouteHelper::includeRouteFiles(__DIR__ . '/api/v1');
 
         // require __DIR__ . '/api/v1/users.php';
         // require __DIR__ . '/api/v1/posts.php';
