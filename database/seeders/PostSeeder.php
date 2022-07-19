@@ -23,7 +23,9 @@ class PostSeeder extends Seeder
     {
         $this->disableForeignKeys();
         $this->truncate('posts');
-        $posts = Post::factory(3)->untitled()->create();
+        $posts = Post::factory(200)
+            // ->untitled()
+            ->create();
 
         $posts->each(function ($post) {
             $post->users()->sync([FactoryHelper::getRandomModelId(User::class)]);
