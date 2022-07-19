@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 // use App\Http\Requests\StorePostRequest;
 // use App\Http\Requests\UpdatePostRequest;
 
+use App\Exceptions\GeneralJsonException;
 use App\Http\Resources\PostResource;
 use App\Models\Post;
 use App\Repositories\PostRepository;
@@ -22,6 +23,7 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
+        // throw new GeneralJsonException('some error', 422);
         $pageSize = $request->page_size ?? 20;
         $posts = Post::query()->paginate($pageSize);
         return PostResource::collection($posts);
@@ -35,7 +37,6 @@ class PostController extends Controller
      */
     public function store(Request $request, PostRepository $repository)
     {
-
         $created = $repository->create($request->only([
             'title',
             'body',
