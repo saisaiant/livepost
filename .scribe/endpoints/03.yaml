@@ -1,0 +1,181 @@
+name: 'User Management'
+description: |-
+
+  APIs to manage the user resource.
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/v1/users
+    metadata:
+      title: 'Display a listing of users.'
+      description: 'Gets a list of users.'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      page_size:
+        name: page_size
+        description: 'Size per page. Defaults to 20.'
+        required: false
+        example: 20
+        type: integer
+        custom: []
+      page:
+        name: page
+        description: 'Page to view.'
+        required: false
+        example: 1
+        type: integer
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":[{"id":46,"name":"Prof. Jadyn Jerde","email":"yerdman@example.org","created_at":"2022-07-23 07:50:59","updated_at":"2022-07-23 07:50:59"},{"id":47,"name":"Miracle Kerluke","email":"michel39@example.com","created_at":"2022-07-23 07:50:59","updated_at":"2022-07-23 07:50:59"}]}'
+        headers: []
+        description: '0'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/v1/users/{id}'
+    metadata:
+      title: 'Display the specified resource.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'User ID.'
+        required: true
+        example: 12
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":{"id":48,"name":"Dr. Cecile Jast","email":"corkery.kaya@example.net","created_at":"2022-07-23 07:50:59","updated_at":"2022-07-23 07:50:59"}}'
+        headers: []
+        description: '0'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/users
+    metadata:
+      title: 'Store a newly created resource in storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Name of the user.'
+        required: true
+        example: 'John Doe'
+        type: string
+        custom: []
+      email:
+        name: email
+        description: 'Email of the user.'
+        required: true
+        example: johndoe@gmail.com
+        type: string
+        custom: []
+    responses:
+      -
+        status: 200
+        content: '{"data":{"id":49,"name":"Pierce King","email":"murphy.fletcher@example.org","created_at":"2022-07-23 07:50:59","updated_at":"2022-07-23 07:50:59"}}'
+        headers: []
+        description: '0'
+    responseFields: []
+  -
+    httpMethods:
+      - PATCH
+    uri: 'api/v1/users/{id}'
+    metadata:
+      title: 'Update the specified resource in storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the user.'
+        required: true
+        example: 13
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Name of the user.'
+        required: false
+        example: 'John Doe'
+        type: string
+        custom: []
+      email:
+        name: email
+        description: 'Email of the user.'
+        required: false
+        example: johndoe@gmail.com
+        type: string
+        custom: []
+    responses:
+      -
+        status: 200
+        content: '{"data":{"id":50,"name":"Retha Streich","email":"alfred27@example.net","created_at":"2022-07-23 07:50:59","updated_at":"2022-07-23 07:50:59"}}'
+        headers: []
+        description: '0'
+    responseFields: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/v1/users/{id}'
+    metadata:
+      title: 'Remove the specified resource from storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the user.'
+        required: true
+        example: 17
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+           "data" : "success"
+          }
+        headers: []
+        description: '200'
+    responseFields: []

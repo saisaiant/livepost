@@ -1,0 +1,961 @@
+openapi: 3.0.3
+info:
+  title: Livepost
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://livepost.test'
+paths:
+  /api/v1/comments:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: ''
+      parameters:
+        -
+          in: query
+          name: page_size
+          description: 'Size per page. Defaults to 20.'
+          example: 20
+          required: false
+          schema:
+            type: integer
+            description: 'Size per page. Defaults to 20.'
+            example: 20
+        -
+          in: query
+          name: page
+          description: 'Page to view.'
+          example: 1
+          required: false
+          schema:
+            type: integer
+            description: 'Page to view.'
+            example: 1
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: '0'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      body: []
+                      user_id: 42
+                      post_id: 14
+                      created_at: '2022-07-23 07:50:58'
+                      updated_at: '2022-07-23 07:50:58'
+                    -
+                      id: null
+                      body: []
+                      user_id: 1
+                      post_id: 1
+                      created_at: ''
+                      updated_at: ''
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        body: []
+                        user_id: 42
+                        post_id: 14
+                        created_at: '2022-07-23 07:50:58'
+                        updated_at: '2022-07-23 07:50:58'
+                      -
+                        id: null
+                        body: []
+                        user_id: 1
+                        post_id: 1
+                        created_at: ''
+                        updated_at: ''
+                    items:
+                      type: object
+      tags:
+        - 'Comment Management'
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: '0'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 4
+                    body: []
+                    user_id: 44
+                    post_id: 16
+                    created_at: '2022-07-23 07:50:58'
+                    updated_at: '2022-07-23 07:50:58'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 4
+                      body: []
+                      user_id: 44
+                      post_id: 16
+                      created_at: '2022-07-23 07:50:58'
+                      updated_at: '2022-07-23 07:50:58'
+      tags:
+        - 'Comment Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                body:
+                  type: array
+                  description: 'Body of the comment.'
+                  example:
+                    - 'This comment is super beautiful'
+                  items:
+                    type: string
+                user_id:
+                  type: integer
+                  description: 'The author id of the comment.'
+                  example: 1
+                post_id:
+                  type: integer
+                  description: 'The post id that the comment belongs to.'
+                  example: 1
+              required:
+                - body
+                - user_id
+                - post_id
+      security: []
+  '/api/v1/comments/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: '0'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 3
+                    body: []
+                    user_id: 43
+                    post_id: 15
+                    created_at: '2022-07-23 07:50:58'
+                    updated_at: '2022-07-23 07:50:58'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 3
+                      body: []
+                      user_id: 43
+                      post_id: 15
+                      created_at: '2022-07-23 07:50:58'
+                      updated_at: '2022-07-23 07:50:58'
+      tags:
+        - 'Comment Management'
+      security: []
+    patch:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: '0'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 5
+                    body: []
+                    user_id: 45
+                    post_id: 17
+                    created_at: '2022-07-23 07:50:58'
+                    updated_at: '2022-07-23 07:50:58'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 5
+                      body: []
+                      user_id: 45
+                      post_id: 17
+                      created_at: '2022-07-23 07:50:58'
+                      updated_at: '2022-07-23 07:50:58'
+      tags:
+        - 'Comment Management'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                body:
+                  type: array
+                  description: 'Body of the comment.'
+                  example:
+                    - 'This comment is super beautiful'
+                  items:
+                    type: string
+                user_id:
+                  type: integer
+                  description: 'The author id of the comment.'
+                  example: 1
+                post_id:
+                  type: integer
+                  description: 'The post id that the comment belongs to.'
+                  example: 1
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: success
+                properties:
+                  data:
+                    type: string
+                    example: success
+      tags:
+        - 'Comment Management'
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the comment.'
+        example: 2
+        required: true
+        schema:
+          type: integer
+  /api/user:
+    get:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/v1/posts:
+    get:
+      summary: 'Display a listing of the resource.'
+      description: 'Gets a list of posts.'
+      parameters:
+        -
+          in: query
+          name: page_size
+          description: 'Size per page. Defaults to 20.'
+          example: 20
+          required: false
+          schema:
+            type: integer
+            description: 'Size per page. Defaults to 20.'
+            example: 20
+        -
+          in: query
+          name: page
+          description: 'Page to view.'
+          example: 1
+          required: false
+          schema:
+            type: integer
+            description: 'Page to view.'
+            example: 1
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: '0'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 18
+                      title: quia
+                      body: []
+                      created_at: '2022-07-23T07:50:58.000000Z'
+                      updated_at: '2022-07-23T07:50:58.000000Z'
+                    -
+                      id: 19
+                      title: consequuntur
+                      body: []
+                      created_at: '2022-07-23T07:50:58.000000Z'
+                      updated_at: '2022-07-23T07:50:58.000000Z'
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 18
+                        title: quia
+                        body: []
+                        created_at: '2022-07-23T07:50:58.000000Z'
+                        updated_at: '2022-07-23T07:50:58.000000Z'
+                      -
+                        id: 19
+                        title: consequuntur
+                        body: []
+                        created_at: '2022-07-23T07:50:58.000000Z'
+                        updated_at: '2022-07-23T07:50:58.000000Z'
+                    items:
+                      type: object
+      tags:
+        - 'Post Management'
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: '0'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 21
+                    title: enim
+                    body: []
+                    created_at: '2022-07-23T07:50:58.000000Z'
+                    updated_at: '2022-07-23T07:50:58.000000Z'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 21
+                      title: enim
+                      body: []
+                      created_at: '2022-07-23T07:50:58.000000Z'
+                      updated_at: '2022-07-23T07:50:58.000000Z'
+      tags:
+        - 'Post Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Title of the post.'
+                  example: Untitled
+                body:
+                  type: string
+                  description: 'Body Description of the post.'
+                  example: 'simply dummy text of the printing and typesetting industry.'
+                user_ids:
+                  type: integer
+                  description: 'User ID of the post.'
+                  example: 1
+              required:
+                - title
+                - body
+                - user_ids
+      security: []
+  '/api/v1/posts/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: '0'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 20
+                    title: et
+                    body: []
+                    created_at: '2022-07-23T07:50:58.000000Z'
+                    updated_at: '2022-07-23T07:50:58.000000Z'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 20
+                      title: et
+                      body: []
+                      created_at: '2022-07-23T07:50:58.000000Z'
+                      updated_at: '2022-07-23T07:50:58.000000Z'
+      tags:
+        - 'Post Management'
+      security: []
+    patch:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: '0'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 22
+                    title: voluptatem
+                    body: []
+                    created_at: '2022-07-23T07:50:58.000000Z'
+                    updated_at: '2022-07-23T07:50:58.000000Z'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 22
+                      title: voluptatem
+                      body: []
+                      created_at: '2022-07-23T07:50:58.000000Z'
+                      updated_at: '2022-07-23T07:50:58.000000Z'
+      tags:
+        - 'Post Management'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: 'Title of the post.'
+                  example: Untitled
+                body:
+                  type: string
+                  description: 'Body Description of the post.'
+                  example: 'simply dummy text of the printing and typesetting industry.'
+                user_ids:
+                  type: integer
+                  description: 'User ID of the post.'
+                  example: 1
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: success
+                properties:
+                  data:
+                    type: string
+                    example: success
+      tags:
+        - 'Post Management'
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'Post ID.'
+        example: 4
+        required: true
+        schema:
+          type: integer
+  /api/v1/users:
+    get:
+      summary: 'Display a listing of users.'
+      description: 'Gets a list of users.'
+      parameters:
+        -
+          in: query
+          name: page_size
+          description: 'Size per page. Defaults to 20.'
+          example: 20
+          required: false
+          schema:
+            type: integer
+            description: 'Size per page. Defaults to 20.'
+            example: 20
+        -
+          in: query
+          name: page
+          description: 'Page to view.'
+          example: 1
+          required: false
+          schema:
+            type: integer
+            description: 'Page to view.'
+            example: 1
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: '0'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 46
+                      name: 'Prof. Jadyn Jerde'
+                      email: yerdman@example.org
+                      created_at: '2022-07-23 07:50:59'
+                      updated_at: '2022-07-23 07:50:59'
+                    -
+                      id: 47
+                      name: 'Miracle Kerluke'
+                      email: michel39@example.com
+                      created_at: '2022-07-23 07:50:59'
+                      updated_at: '2022-07-23 07:50:59'
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 46
+                        name: 'Prof. Jadyn Jerde'
+                        email: yerdman@example.org
+                        created_at: '2022-07-23 07:50:59'
+                        updated_at: '2022-07-23 07:50:59'
+                      -
+                        id: 47
+                        name: 'Miracle Kerluke'
+                        email: michel39@example.com
+                        created_at: '2022-07-23 07:50:59'
+                        updated_at: '2022-07-23 07:50:59'
+                    items:
+                      type: object
+      tags:
+        - 'User Management'
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: '0'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 49
+                    name: 'Pierce King'
+                    email: murphy.fletcher@example.org
+                    created_at: '2022-07-23 07:50:59'
+                    updated_at: '2022-07-23 07:50:59'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 49
+                      name: 'Pierce King'
+                      email: murphy.fletcher@example.org
+                      created_at: '2022-07-23 07:50:59'
+                      updated_at: '2022-07-23 07:50:59'
+      tags:
+        - 'User Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Name of the user.'
+                  example: 'John Doe'
+                email:
+                  type: string
+                  description: 'Email of the user.'
+                  example: johndoe@gmail.com
+              required:
+                - name
+                - email
+      security: []
+  '/api/v1/users/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: '0'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 48
+                    name: 'Dr. Cecile Jast'
+                    email: corkery.kaya@example.net
+                    created_at: '2022-07-23 07:50:59'
+                    updated_at: '2022-07-23 07:50:59'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 48
+                      name: 'Dr. Cecile Jast'
+                      email: corkery.kaya@example.net
+                      created_at: '2022-07-23 07:50:59'
+                      updated_at: '2022-07-23 07:50:59'
+      tags:
+        - 'User Management'
+      security: []
+    patch:
+      summary: 'Update the specified resource in storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: '0'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 50
+                    name: 'Retha Streich'
+                    email: alfred27@example.net
+                    created_at: '2022-07-23 07:50:59'
+                    updated_at: '2022-07-23 07:50:59'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      id: 50
+                      name: 'Retha Streich'
+                      email: alfred27@example.net
+                      created_at: '2022-07-23 07:50:59'
+                      updated_at: '2022-07-23 07:50:59'
+      tags:
+        - 'User Management'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Name of the user.'
+                  example: 'John Doe'
+                email:
+                  type: string
+                  description: 'Email of the user.'
+                  example: johndoe@gmail.com
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: success
+                properties:
+                  data:
+                    type: string
+                    example: success
+      tags:
+        - 'User Management'
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'User ID.'
+        example: 12
+        required: true
+        schema:
+          type: integer
+tags:
+  -
+    name: 'Comment Management'
+    description: "\nAPIs to manage the comment resource."
+  -
+    name: Endpoints
+    description: ''
+  -
+    name: 'Post Management'
+    description: "\nAPIs to manage the post resource."
+  -
+    name: 'User Management'
+    description: "\nAPIs to manage the user resource."

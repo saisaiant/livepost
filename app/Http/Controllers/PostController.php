@@ -16,10 +16,25 @@ use App\Rules\IntegerArray;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 // use Illuminate\Support\Facades\DB;
 
+/**
+ * @group Post Management
+ *
+ * APIs to manage the post resource.
+ */
 class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
+     * 
+     * Gets a list of posts.
+     * 
+     * @queryParam page_size int Size per page. Defaults to 20. Example: 20
+     * @queryParam page int Page to view. Example: 1
+     * 
+     * @apiResourceCollection App\Http\Resources\PostResource
+     * @apiResourceModel App\Models\Post
+     * 
+     * 
      * @param  Illuminate\Http\Request $request
      * @return ResourceCollection
      */
@@ -28,11 +43,19 @@ class PostController extends Controller
         // throw new GeneralJsonException('some error', 422);
         $pageSize = $request->page_size ?? 20;
         $posts = Post::query()->paginate($pageSize);
+
         return PostResource::collection($posts);
     }
 
     /**
      * Store a newly created resource in storage.
+     * 
+     * @bodyParam title string required Title of the post. Example: Untitled
+     * @bodyParam body string required Body Description of the post. Example: simply dummy text of the printing and typesetting industry.
+     * @bodyParam user_ids int required User ID of the post. Example: 1
+     * 
+     * @apiResource App\Http\Resources\PostResource
+     * @apiResourceModel App\Models\Post
      *
      * @param  $request
      * @return PostResource
@@ -74,6 +97,10 @@ class PostController extends Controller
 
     /**
      * Display the specified resource.
+     * 
+     * @urlParam id int required Post ID.
+     * @apiResource App\Http\Resources\PostResource
+     * @apiResourceModel App\Models\Post
      *
      * @param  \App\Models\Post  $post
      * @return PostResource
@@ -85,6 +112,13 @@ class PostController extends Controller
 
     /**
      * Update the specified resource in storage.
+     * 
+     * @bodyParam title string Title of the post. Example: Untitled
+     * @bodyParam body string Body Description of the post. Example: simply dummy text of the printing and typesetting industry.
+     * @bodyParam user_ids int User ID of the post. Example: 1
+     * 
+     * @apiResource App\Http\Resources\PostResource
+     * @apiResourceModel App\Models\Post
      *
      * @param  \App\Http\Request  $request
      * @param  \App\Models\Post  $post
@@ -104,6 +138,10 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
+     * @response 200  {
+     *  "data" : "success"
+     * }
+     * 
      * @param  \App\Models\Post  $post
      * @param  PostRepository
      * @return \Illuminate\Http\JsonResponse
